@@ -9,6 +9,7 @@ public class 正则 {
     public static void main(String[] args) {
         if(args.length<2){
             System.out.println("使用方法: 正则命令 正则表达式 匹配目标");
+            return;
         }
         正则 正则 = new 正则( args[0]);
         System.out.println(正则.匹配(args[1]));
