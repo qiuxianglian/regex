@@ -3,16 +3,15 @@
 已经实现*?和字符匹配，见[正则实现](./正则.java).
 
 
-## 编译
+## 编译运行
 
 ```bash
-cd src
-javac *.java
+javac 正则.java
+java 正则
 ```
 
-## 运行
-
+或者在很高的jdk版本上直接
 ```bash
-java 正则
+java 正则.java
 ```
 
