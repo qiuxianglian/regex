@@ -1,5 +1,4 @@
 public abstract class 抽象节点{
-//    abstract public boolean 匹配(String 字符串,int 始,int 终);
 
     public boolean 为节点列表(){
         return false;

@@ -1,19 +1,17 @@
-import java.util.Iterator;
-
-public class 匹配站位 extends 抽象节点{
-    public static boolean 为站位(char 字){
-        return 字=='?';
+public class 匹配星 extends 抽象节点 {
+    public static boolean 为星(char 字){
+        return 字=='*';
     }
     @Override
     public String toString() {
-        return "?";
+        return "*";
     }
 
 
-    public boolean 为匹配站位(){
+    public boolean 为匹配星(){
         return true;
     }
-    public 匹配站位 转为匹配站位(){
+    public 匹配星 转为匹配星(){
         return this;
     }
 
@@ -24,7 +22,7 @@ public class 匹配站位 extends 抽象节点{
             @Override
             public 抽象节点 peek() {
                 if(hasNext()){
-                    return 匹配站位.this;
+                    return 匹配星.this;
                 }
                 return null;
             }
@@ -36,7 +34,8 @@ public class 匹配站位 extends 抽象节点{
 
             @Override
             public 抽象节点 next() {
-                return 匹配站位.this;
+                take = true;
+                return 匹配星.this;
             }
         };
     }
