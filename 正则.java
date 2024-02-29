@@ -11,8 +11,14 @@ public class 正则 {
             System.out.println("使用方法: 正则命令 正则表达式 匹配目标");
             return;
         }
-        正则 正则 = new 正则( args[0]);
-        System.out.println(正则.匹配(args[1]));
+        String 表达式 = args[0];
+        String 字符串 = args[1];
+
+        正则 正则 = new 正则(表达式);
+        System.out.println(正则.匹配(字符串));
+
+
+
     }
 
     private final String 正则字符串;
@@ -46,13 +52,18 @@ public class 正则 {
             if(!匹配节点(节点,节点流,新字符串,字符串指针,true)){
                 return false;
             }
-
         }
+
+        if(字符串指针.get() != 新字符串.length()){
+            return false;
+        }
+
         return true;
     }
 
     private boolean 匹配节点(抽象节点 节点,流 节点流,String 新字符串,AtomicInteger 字符串指针,boolean 更新指针){
-        if(节点 == null) return true;
+
+
         if(节点.为标志符节点()){
             return 匹配标志符节点(节点.转为标志符节点(), 节点流, 新字符串, 字符串指针, 更新指针);
         }else if(节点.为匹配星()){
@@ -84,20 +95,26 @@ public class 正则 {
         return true;
     }
     private boolean 匹配星节点(匹配星 匹配星节点,流 节点流,String 新字符串,AtomicInteger 字符串指针,boolean 更新指针){
-        AtomicInteger 备份指针 = new AtomicInteger(字符串指针.get());
         if(!节点流.hasNext()){
+            if(更新指针){
+                字符串指针.set(新字符串.length());
+            }
             return true;
         }
+        AtomicInteger 备份指针 = new AtomicInteger(字符串指针.get());
+
         if(字符串指针.get()>=新字符串.length()){
             return false;
         }
         抽象节点 下节点 = 节点流.peek();
+        while (下节点.为匹配星()&&节点流.hasNext()){
+            下节点 = 节点流.next();
+        }
         while (!匹配节点(下节点,节点流,新字符串, 备份指针,false)){
             if(备份指针.get() >= 新字符串.length()){
                 return false;
             }
             备份指针.incrementAndGet();
-
         }
         if(更新指针){
             字符串指针.set(备份指针.get());
@@ -126,11 +143,11 @@ public class 正则 {
             this.正则字符串 = 正则字符串;
         }
         private class 标志符累积器 {
-            private StringBuffer 累积器;
+            private StringBuilder 累积器;
             private boolean 开关 = false;
 
             public 标志符累积器() {
-                this.累积器 = new StringBuffer();
+                this.累积器 = new StringBuilder();
             }
 
             public void 开(){
@@ -147,9 +164,9 @@ public class 正则 {
             }
             public void 导出到(节点列表 节点列表){
                 this.关();
-                if(!累积器.isEmpty()){
+                if(this.累积器.length()!=0){
                     String 阶段结果 = 累积器.toString();
-                    累积器 =  new StringBuffer();
+                    累积器 =  new StringBuilder();
                     节点列表.添加(new 标志符节点(阶段结果));
                 }
             }
