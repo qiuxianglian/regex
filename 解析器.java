@@ -14,9 +14,12 @@ public class 解析器 {
         标志符累积器 累积器 = new 标志符累积器();
         for (int i = 0; i < 正则字符串.length(); i++) {
             char 字 = 正则字符串.charAt(i);
-            if (匹配零或多次.为星(字)) {
-                累积器.导出到(节点列表);
-                节点列表.添加(new 匹配零或多次());
+            if (匹配零或多次.名 == 字) {
+                节点列表.添加(new 匹配零或多次(累积器.导出()));
+            } else if (匹配零或一次.名 == 字) {
+                节点列表.添加(new 匹配零或一次(累积器.导出()));
+            } else if (匹配一或多次.名 == 字) {
+                节点列表.添加(new 匹配一或多次(累积器.导出()));
             } else if (匹配占位.为站位(字)) {
                 累积器.导出到(节点列表);
                 节点列表.添加(new 匹配占位());
@@ -57,6 +60,17 @@ public class 解析器 {
                 String 阶段结果 = 累积器.toString();
                 累积器 = new StringBuffer();
                 节点列表.添加(new 匹配标志符(阶段结果));
+            }
+        }
+
+        public 匹配标志符 导出() {
+            this.关();
+            if (累积器.length()!=0) {
+                String 阶段结果 = 累积器.toString();
+                累积器 = new StringBuffer();
+                return new 匹配标志符(阶段结果);
+            }else{
+                return null;
             }
         }
     }

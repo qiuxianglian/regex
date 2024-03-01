@@ -51,7 +51,7 @@ public class 节点列表 extends 抽象节点 {
 
             @Override
             public 抽象节点 回顾() {
-                return 坐标 == 0 ? null : 节点列表.this.抽象节点s.get(坐标-1);
+                return 坐标 < 2 ? null : 节点列表.this.抽象节点s.get(坐标-2);
             }
 
             @Override

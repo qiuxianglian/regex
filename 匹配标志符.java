@@ -7,9 +7,7 @@ public class 匹配标志符 extends 抽象节点 {
         this.字符串值 = 字符串值;
     }
 
-    public static boolean 为标志符(char 字) {
-        return !匹配零或多次.为星(字) && !匹配占位.为站位(字);
-    }
+
 
     public String get字符串值() {
         return 字符串值;
