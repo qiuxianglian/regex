@@ -42,12 +42,27 @@ public class 节点列表 extends 抽象节点 {
             private int 坐标 = 0;
 
             @Override
-            public 抽象节点 peek() {
+            public 抽象节点 预览() {
                 if (hasNext()) {
                     return 节点列表.this.抽象节点s.get(坐标);
                 }
                 return null;
             }
+
+            @Override
+            public 抽象节点 回顾() {
+                return 坐标 == 0 ? null : 节点列表.this.抽象节点s.get(坐标-1);
+            }
+
+            @Override
+            public 抽象节点 last() {
+                if(坐标 == 0){
+                    return null;
+                }
+                坐标 -- ;
+                return 节点列表.this.抽象节点s.get(坐标);
+            }
+
 
             @Override
             public boolean hasNext() {

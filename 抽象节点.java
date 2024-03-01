@@ -62,8 +62,25 @@ public abstract class 抽象节点 {
             private boolean take = false;
 
             @Override
-            public 抽象节点 peek() {
+            public 抽象节点 预览() {
                 if (hasNext()) {
+                    return 节点;
+                }
+                return null;
+            }
+
+            @Override
+            public 抽象节点 回顾() {
+                if(take){
+                    return 节点;
+                }
+                return null;
+            }
+
+            @Override
+            public 抽象节点 last() {
+                if(take){
+                    take = false;
                     return 节点;
                 }
                 return null;
