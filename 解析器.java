@@ -53,7 +53,7 @@ public class 解析器 {
 
         public void 导出到(节点列表 节点列表) {
             this.关();
-            if (!累积器.isEmpty()) {
+            if (累积器.length()!=0) {
                 String 阶段结果 = 累积器.toString();
                 累积器 = new StringBuffer();
                 节点列表.添加(new 匹配标志符(阶段结果));
