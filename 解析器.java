@@ -56,7 +56,7 @@ public class 解析器 {
             if (!累积器.isEmpty()) {
                 String 阶段结果 = 累积器.toString();
                 累积器 = new StringBuffer();
-                节点列表.添加(new 标志符节点(阶段结果));
+                节点列表.添加(new 匹配标志符(阶段结果));
             }
         }
     }

@@ -22,7 +22,7 @@ public abstract class 抽象节点 {
         return false;
     }
 
-    public 标志符节点 转为标志符节点() {
+    public 匹配标志符 转为标志符节点() {
         throw new RuntimeException("not impl");
     }
 

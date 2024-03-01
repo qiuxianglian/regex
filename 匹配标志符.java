@@ -1,9 +1,9 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class 标志符节点 extends 抽象节点 {
+public class 匹配标志符 extends 抽象节点 {
     private final String 字符串值;
 
-    public 标志符节点(String 字符串值) {
+    public 匹配标志符(String 字符串值) {
         this.字符串值 = 字符串值;
     }
 
@@ -20,7 +20,7 @@ public class 标志符节点 extends 抽象节点 {
         return 字符串值;
     }
 
-    public 标志符节点 转为标志符节点() {
+    public 匹配标志符 转为标志符节点() {
         return this;
     }
 
