@@ -54,7 +54,7 @@ public abstract class 抽象节点 {
         return 单字流(this);
     }
 
-    abstract public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针, boolean 更新指针);
+    abstract public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针);
 
 
     protected 流 单字流(抽象节点 节点) {

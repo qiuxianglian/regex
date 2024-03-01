@@ -15,13 +15,12 @@ public class 匹配占位 extends 抽象节点 {
     }
 
     @Override
-    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针, boolean 更新指针) {
+    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针) {
         if (字符串指针.get() >= 新字符串.length()) {
             return false;
         }
-        if (更新指针) {
-            字符串指针.incrementAndGet();
-        }
+
+        字符串指针.incrementAndGet();
         return true;
     }
 

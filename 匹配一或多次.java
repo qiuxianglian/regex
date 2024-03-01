@@ -19,7 +19,7 @@ public class 匹配一或多次 extends 抽象节点 {
     }
 
     @Override
-    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针, boolean 更新指针) {
+    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针) {
         return false;
     }
 }

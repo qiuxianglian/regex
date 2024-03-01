@@ -29,22 +29,18 @@ public class 匹配标志符 extends 抽象节点 {
     }
 
     @Override
-    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针, boolean 更新指针) {
-        int 备份指针 = 字符串指针.get();
+    public boolean 匹配(流 节点流, String 新字符串, AtomicInteger 字符串指针) {
         String 字符串值 = this.get字符串值();
         for (int i = 0; i < 字符串值.length(); i++) {
-            if (备份指针 >= 新字符串.length()) {
+            if (字符串指针.get() >= 新字符串.length()) {
                 return false;
             }
 
             if (字符串值.charAt(i) == 新字符串.charAt(字符串指针.get())) {
-                备份指针++;
+                字符串指针.incrementAndGet();
             } else {
                 return false;
             }
-        }
-        if (更新指针) {
-            字符串指针.set(备份指针);
         }
         return true;
     }
